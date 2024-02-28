@@ -1,8 +1,9 @@
-package ru.egorbauer.cfttpapp
+package ru.egorbauer.cfttpapp.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import ru.egorbauer.cfttpapp.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
