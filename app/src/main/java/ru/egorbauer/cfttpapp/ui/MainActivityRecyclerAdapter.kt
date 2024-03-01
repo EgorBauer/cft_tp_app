@@ -1,5 +1,6 @@
 package ru.egorbauer.cfttpapp.ui
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -34,13 +35,13 @@ class MainActivityRecyclerAdapter(
         private val onItemClick: (Int) -> Unit
     ): RecyclerView.ViewHolder(binding.root) {
         fun bind(data: User) {
+            val res = data.location.substringBeforeLast(",").substringBeforeLast(",")
             with(binding) {
                 ivPhoto.load(data.picture) {
                     crossfade(true)
-                    transformations(CircleCropTransformation())
                 }
                 tvName.text = data.name
-                tvAddress.text = data.location
+                tvAddress.text = res
                 tvPhoneNumber.text = data.phone
                 root.setOnClickListener {
                     onItemClick(adapterPosition)
@@ -55,6 +56,7 @@ class MainActivityRecyclerAdapter(
 
     override fun getItemCount(): Int = userList.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setUpdatedData(userList: List<User>) {
         this.userList.clear()
         this.userList.addAll(userList)

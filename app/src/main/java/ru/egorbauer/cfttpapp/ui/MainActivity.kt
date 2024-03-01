@@ -54,8 +54,6 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun uiBind(data:List<User>){
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val network = connectivityManager.activeNetwork
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         binding.cardViewRecycler.layoutManager = layoutManager
         adapter.setUpdatedData(data)
@@ -67,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                 binding.swipeRefresh.isRefreshing = false
             }
             else {
-                Toast.makeText(this, "No Internet Connection",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "You have no internet",Toast.LENGTH_SHORT).show()
                 binding.swipeRefresh.isRefreshing = false
             }
         }

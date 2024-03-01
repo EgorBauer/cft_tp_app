@@ -8,7 +8,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import coil.load
-import coil.transform.CircleCropTransformation
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.egorbauer.cfttpapp.databinding.SecondActivityBinding
@@ -24,7 +23,7 @@ class SecondActivity: AppCompatActivity(){
         super.onCreate(savedInstanceState)
         _binding = SecondActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val secondIntent = Intent()
+        val secondIntent = intent
         val position = secondIntent.getIntExtra("number",0)
         getData(position)
     }
@@ -43,14 +42,13 @@ class SecondActivity: AppCompatActivity(){
         with(binding){
             detailedPhoto.load(user.picture){
                 crossfade(true)
-                transformations(CircleCropTransformation())
             }
             detailedName.text = user.name
             detailedGender.text = user.gender
             detailedAddress.text = user.location
             detailedPhoneNumber.text = user.phone
             detailedEmail.text = user.email
-            detailedAge.text = user.age + " y.o"
+            detailedAge.text = user.age + " years old"
             detailedBirthday.text = user.dob.removeRange(10,user.dob.length)
 
             detailedPhoneNumber.setOnClickListener {

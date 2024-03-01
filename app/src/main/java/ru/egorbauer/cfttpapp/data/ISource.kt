@@ -4,7 +4,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 
 interface ISource{
-    @GET("api/?results=25")
+    @GET("api/?results=15")
     suspend fun getUsers(): Response<Result>
 }
 
