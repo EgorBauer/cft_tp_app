@@ -1,9 +1,10 @@
-package ru.egorbauer.cfttpapp.data
+package ru.egorbauer.cfttpapp.data.datasource.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import ru.egorbauer.cfttpapp.data.DatabaseUser
 
 @Database(
     version = 1,
@@ -11,7 +12,7 @@ import androidx.room.RoomDatabase
         DatabaseUser::class
     ]
 )
-abstract class CftDatabase: RoomDatabase() {
+abstract class CftDatabase : RoomDatabase() {
     companion object {
         @Volatile
         private var INSTANCE: CftDatabase? = null
@@ -31,5 +32,6 @@ abstract class CftDatabase: RoomDatabase() {
             }
         }
     }
-    abstract fun getUserDao():UserDao
+
+    abstract fun getUserDao(): UserDao
 }

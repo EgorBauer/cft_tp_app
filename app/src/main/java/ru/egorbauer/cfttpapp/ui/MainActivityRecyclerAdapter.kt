@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import coil.transform.CircleCropTransformation
 import ru.egorbauer.cfttpapp.databinding.RvItemCardBinding
 import coil.load
 import ru.egorbauer.cfttpapp.domain.entity.User
@@ -33,7 +32,7 @@ class MainActivityRecyclerAdapter(
     inner class ViewHolder(
         private val binding: RvItemCardBinding,
         private val onItemClick: (Int) -> Unit
-    ): RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data: User) {
             val res = data.location.substringBeforeLast(",").substringBeforeLast(",")
             with(binding) {

@@ -4,7 +4,12 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import ru.egorbauer.cfttpapp.data.*
-import ru.egorbauer.cfttpapp.domain.IUserRepo
+import ru.egorbauer.cfttpapp.data.datasource.database.CftDatabase
+import ru.egorbauer.cfttpapp.data.datasource.Source
+import ru.egorbauer.cfttpapp.data.datasource.provideSource
+import ru.egorbauer.cfttpapp.data.datasource.remote.network.INetwork
+import ru.egorbauer.cfttpapp.data.datasource.remote.network.Network
+import ru.egorbauer.cfttpapp.domain.repo.IUserRepo
 import ru.egorbauer.cfttpapp.ui.MainActivityViewModel
 import ru.egorbauer.cfttpapp.ui.SecondActivityViewModel
 

@@ -1,4 +1,4 @@
-package ru.egorbauer.cfttpapp.data
+package ru.egorbauer.cfttpapp.data.datasource.remote.network
 
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -9,7 +9,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 class Network(
-): INetwork {
+) : INetwork {
 
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
@@ -23,8 +23,8 @@ class Network(
             .build()
     }
 
-    private fun buildClient() : OkHttpClient {
-        return  OkHttpClient.Builder()
+    private fun buildClient(): OkHttpClient {
+        return OkHttpClient.Builder()
             .connectTimeout(20, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
             .addInterceptor(HttpLoggingInterceptor())

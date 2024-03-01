@@ -1,4 +1,4 @@
-package ru.egorbauer.cfttpapp.data
+package ru.egorbauer.cfttpapp.data.datasource.remote.network
 
 import retrofit2.Retrofit
 

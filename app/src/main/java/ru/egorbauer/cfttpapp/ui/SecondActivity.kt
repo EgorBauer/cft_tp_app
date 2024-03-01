@@ -13,34 +13,34 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.egorbauer.cfttpapp.databinding.SecondActivityBinding
 import ru.egorbauer.cfttpapp.domain.entity.User
 
-class SecondActivity: AppCompatActivity(){
+class SecondActivity : AppCompatActivity() {
 
     private var _binding: SecondActivityBinding? = null
     private val binding get() = _binding!!
-    private val vmSecond:SecondActivityViewModel by viewModel()
+    private val vmSecond: SecondActivityViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = SecondActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val secondIntent = intent
-        val position = secondIntent.getIntExtra("number",0)
+        val position = secondIntent.getIntExtra("number", 0)
         getData(position)
     }
 
-    private fun getData(position:Int){
+    private fun getData(position: Int) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                vmSecond.userSecondStateFlow.collect{
+                vmSecond.userSecondStateFlow.collect {
                     uiBind(it[position])
                 }
             }
         }
     }
 
-    private fun uiBind(user: User){
-        with(binding){
-            detailedPhoto.load(user.picture){
+    private fun uiBind(user: User) {
+        with(binding) {
+            detailedPhoto.load(user.picture) {
                 crossfade(true)
             }
             detailedName.text = user.name
@@ -49,7 +49,7 @@ class SecondActivity: AppCompatActivity(){
             detailedPhoneNumber.text = user.phone
             detailedEmail.text = user.email
             detailedAge.text = user.age + " years old"
-            detailedBirthday.text = user.dob.removeRange(10,user.dob.length)
+            detailedBirthday.text = user.dob.removeRange(10, user.dob.length)
 
             detailedPhoneNumber.setOnClickListener {
                 val call = Intent(Intent.ACTION_DIAL).apply {

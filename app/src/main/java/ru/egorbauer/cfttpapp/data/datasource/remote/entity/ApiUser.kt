@@ -1,91 +1,92 @@
-package ru.egorbauer.cfttpapp.data
+package ru.egorbauer.cfttpapp.data.datasource.remote.entity
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import ru.egorbauer.cfttpapp.data.DatabaseUser
 import ru.egorbauer.cfttpapp.domain.entity.User
 
 @JsonClass(generateAdapter = true)
 data class Result(
     @Json(name = "results")
-    val users:List<ApiUser>
+    val users: List<ApiUser>
 )
 
 @JsonClass(generateAdapter = true)
 data class ApiUser(
     @Json(name = "gender")
-    val gender:String,
+    val gender: String,
     @Json(name = "name")
-    val name:Name,
+    val name: Name,
     @Json(name = "location")
-    val location:Location,
+    val location: Location,
     @Json(name = "email")
-    val email:String,
+    val email: String,
     @Json(name = "dob")
-    val dob:Dob,
+    val dob: Dob,
     @Json(name = "phone")
-    val phone:String,
+    val phone: String,
     @Json(name = "picture")
-    val picture:Picture,
+    val picture: Picture,
     @Json(name = "nat")
-    val nat:String
+    val nat: String
 )
 
 @JsonClass(generateAdapter = true)
 data class Name(
     @Json(name = "title")
-    val title:String,
+    val title: String,
     @Json(name = "first")
-    val first:String,
+    val first: String,
     @Json(name = "last")
-    val last:String
+    val last: String
 )
 
 @JsonClass(generateAdapter = true)
 data class Location(
     @Json(name = "street")
-    val street:Street,
+    val street: Street,
     @Json(name = "city")
-    val city:String,
+    val city: String,
     @Json(name = "state")
-    val state:String,
+    val state: String,
     @Json(name = "country")
-    val country:String,
+    val country: String,
     @Json(name = "coordinates")
-    val coordinates:Coordinates,
+    val coordinates: Coordinates,
 )
 
 @JsonClass(generateAdapter = true)
 data class Coordinates(
     @Json(name = "latitude")
-    val latitude:String,
+    val latitude: String,
     @Json(name = "longitude")
-    val longitude:String
+    val longitude: String
 )
 
 @JsonClass(generateAdapter = true)
 data class Street(
     @Json(name = "number")
-    val number:Int,
+    val number: Int,
     @Json(name = "name")
-    val name:String
+    val name: String
 )
 
 @JsonClass(generateAdapter = true)
 data class Dob(
     @Json(name = "date")
-    val date:String,
+    val date: String,
     @Json(name = "age")
-    val age:Int
+    val age: Int
 )
 
 @JsonClass(generateAdapter = true)
 data class Picture(
     @Json(name = "large")
-    val large:String,
+    val large: String,
     @Json(name = "medium")
-    val medium:String,
+    val medium: String,
     @Json(name = "thumbnail")
-    val thumbnail:String
+    val thumbnail: String
 )
 
 fun ApiUser.toUsers() = User(

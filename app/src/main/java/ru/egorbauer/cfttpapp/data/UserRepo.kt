@@ -1,6 +1,10 @@
 package ru.egorbauer.cfttpapp.data
 
-import ru.egorbauer.cfttpapp.domain.IUserRepo
+import ru.egorbauer.cfttpapp.data.datasource.database.CftDatabase
+import ru.egorbauer.cfttpapp.data.datasource.Source
+import ru.egorbauer.cfttpapp.data.datasource.remote.entity.toDB
+import ru.egorbauer.cfttpapp.data.datasource.remote.entity.toUsers
+import ru.egorbauer.cfttpapp.domain.repo.IUserRepo
 import ru.egorbauer.cfttpapp.domain.entity.User
 
 class UserRepo(
